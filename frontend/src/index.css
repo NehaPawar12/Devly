@@ -5,7 +5,7 @@
 body {
   background: linear-gradient(
       to bottom right,
-      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.4)
     ),
     url("/bg1.png");
@@ -38,6 +38,9 @@ body {
 /* Glassmorphism */
 @layer components{
     .bg-glass{
-        @apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 hover:bg-gray-600/10 border-gray-800 text-white
+        @apply h-full w-full bg-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-0 hover:bg-gray-300/10 border-gray-600 text-white
+
     }
 }
+
+/* bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 hover:bg-gray-600/10 border-gray-600 text-white */
