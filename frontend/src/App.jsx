@@ -1,15 +1,27 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+
+// Pages Imports
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import ExplorePage from './pages/ExplorePage';
+import LikesPage from './pages/LikesPage';
+
+// Components import
+import Sidebar from './components/Sidebar';
+
+
 
 function App() {
   
 
   return (
     
-    <div className="flex">
+    <div className="flex text-white">
       {/* Component */}
       <Sidebar/> 
 
-      <div>
+      <div className="max-w-5xl my-5 text-white mx-auto transition-all duration-300 flex-1">
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/login" element={<LoginPage/>} />
