@@ -17,7 +17,7 @@ function App() {
 
   return (
     
-    <div className="flex text-white">
+    <div className="flex">
       {/* Component */}
       <Sidebar/> 
 
