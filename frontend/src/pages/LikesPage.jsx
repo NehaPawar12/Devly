@@ -31,7 +31,7 @@ const LikesPage = () => {
 						<th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
 							<img
 								className='w-10 h-10 rounded-full'
-								src={"https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"}
+								src={"https://img.freepik.com/free-vector/smiling-woman-with-braided-hair_1308-174961.jpg?ga=GA1.1.475717472.1736048471&semt=ais_hybrid"}
 								alt='Jese image'
 							/>
 							<div className='ps-3'>
