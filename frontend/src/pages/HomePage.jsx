@@ -15,12 +15,12 @@ const HomePage = () => {
 
 	const [sortType, setSortType] = useState("forks");
 
-	const getUserProfileAndRepos = useCallback(async() => {
+	const getUserProfileAndRepos = useCallback(async(username = "NehaPawar12") => {
 		setLoading(true);
 		try {
 			//fetch the profile info as well as repos
 
-			const userRes = await fetch("https://api.github.com/users/NehaPawar12")
+			const userRes = await fetch(`https://api.github.com/users/${username}`)
 			
 			//extract body
 			const userProfile = await userRes.json();
@@ -30,9 +30,10 @@ const HomePage = () => {
 			const repoRes = await fetch(userProfile.repos_url);
 			const repos = await repoRes.json();
 			setRepos(repos);
-			console.log("userProfile: ",userProfile)
-			console.log("Repos: ", repos)
+			// console.log("userProfile: ",userProfile)
+			// console.log("Repos: ", repos)
 
+			return {userProfile, repos}
 		} catch (error) {
 			toast.error(error.message)
 
@@ -44,14 +45,29 @@ const HomePage = () => {
 		getUserProfileAndRepos();
 	},[getUserProfileAndRepos])
 
+	//Search function
+	const onSearch = async (e, username) => {
+		e.preventDefault();
+		setLoading(true);
+		setRepos([])
+		setUserProfile(null);
+
+		const {userProfile, repos} = await getUserProfileAndRepos(username);
+
+		setUserProfile(userProfile);
+		setRepos(repos);
+
+		setLoading(false);
+	}
+
   return (
     <div className='m-4'>
-			<Search />
+			<Search onSearch={onSearch} />
 			  <SortRepos />
 			<div className='flex gap-4 flex-col lg:flex-row justify-center items-start'>
 				{userProfile && !loading && <ProfileInfo userProfile={userProfile}/>}
 				
-				{repos.length > 0 && !loading && <Repos repos={repos}/>}
+				{!loading && <Repos repos={repos}/>}
 				{loading && <Spinner/>}
 				
 			</div>
