@@ -38,7 +38,7 @@ body {
 /* Glassmorphism */
 @layer components{
     .bg-glass{
-        @apply  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-0 hover:bg-gray-500/10 border-gray-600 text-white
+        @apply  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 hover:bg-gray-400/10 border-gray-600 text-white
 
     }
 }
