@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
                 type:String,
             },
             likedDate:{
+                type:Date,
                 default:Date.now
             }
         }
