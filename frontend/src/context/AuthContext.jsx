@@ -11,9 +11,10 @@ export const useAuthContext = () => {
 }
 
 
-export const AuthContextProvider = ({children}) => {
+export const AuthContextProvider = ({ children }) => {
     const [authUser, setAuthUser] = useState(null);
 
+    //We need this loading state so as to get on the same page when we refresh
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,15 +22,15 @@ export const AuthContextProvider = ({children}) => {
             setLoading(true)
             try {
                 const res = await fetch("/api/auth/check", {
-                    credentials:"include"
+                    credentials: "include"
                 })
 
                 const data = await res.json();
                 setAuthUser(data.user); // it can either be null or an authenticated user object.
             } catch (error) {
                 toast.error(error.message)
-            } 
-            finally{
+            }
+            finally {
                 setLoading(false);
             }
         }
@@ -37,7 +38,7 @@ export const AuthContextProvider = ({children}) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{authUser, setAuthUser, loading}}>
+        <AuthContext.Provider value={{ authUser, setAuthUser, loading }}>
             {children}
         </AuthContext.Provider>
     )
