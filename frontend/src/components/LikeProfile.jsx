@@ -6,6 +6,7 @@ import {useAuthContext} from '../context/AuthContext'
 const LikeProfile = ({userProfile}) => {
 
     const {authUser} = useAuthContext();
+    const isOwnProfile = authUser?.username === userProfile.login
 
     const handleLikeProfile = async () => {
         //where we want to send request to backend
@@ -25,7 +26,8 @@ const LikeProfile = ({userProfile}) => {
         }
     }
 
-    if(!authUser) return null;
+    if(!authUser || isOwnProfile) return null;
+
 
   return (
    <button className='p-2 text-xs w-full font-medium rounded-md bg-glass border border-blue-400 flex items-center gap-2'
